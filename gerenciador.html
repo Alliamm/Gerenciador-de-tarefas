@@ -23,19 +23,39 @@
         </nav>
         <main>
                 <div id="CaixaTarefa">
+                <form id="tarefa">
                     <label>Descrição:</label>
-                        <input type="text" placeholder="O que será">
+                        <input type="text" placeholder="O que será?" name="descricao" id="descricao" class="tarefa">
                     <label>Prioridade:</label>
-                        <input type="text" placeholder="Baixo, Médio, Alto ou Urgente?">
+                    <select name="prioridade" id="prioridade" class="tarefa">
+                        <option value="0" disabled selected hidden></option>
+                        <option value="1">Alta</option>
+                        <option value="2">Média</option>
+                        <option value="3">Baixa</option>
+                    </select>
+                    <br>
                     <label>Categoria:</label>
-                        <input type="text" placeholder=" É sobre o que a tarefa?">
+                        <select name="categoria" id="categoria" class="tarefa">
+                            <option value="0" disabled selected hidden></option>
+                            <option value="1">Estudos</option>
+                            <option value="2">Lazer</option>
+                            <option value="3">Trabalho</option>
+                            <option value="4">Rotina</option>
+                        </select>
+                    <br>
                     <label>Situação da tarefa: </label>
-                        <input type="text" placeholder="Começou, em andamento ou Finalizado?">
+                        <select name="sitTarefa" id="sitTarefa" class="tarefa">
+                        <option value="0" disabled selected hidden></option>
+                        <option value="1">Começando</option>
+                        <option value="2">Em andamento</option>
+                        <option value="3">Concluído</option>
+                        </select>
                     <label>Data:</label>
-                    <input type="text" placeholder=" Para Quando?">
+                    <input type="date" name="dataTarefa" id="dataTarefa" class="tarefa">
+                    <input type="button" value="Adicionar Tarefa" class="TarefaFuncao" id="cadastrar"/>
+                    <input type="reset" class="TarefaFuncao"/>
+                </form>
                 </div>
-            <input type="submit" value="Adicionar Tarefa" class="TarefaFuncao"/>
-            <input type="reset" class="TarefaFuncao"/>
         </main>
         <footer>
         </footer>
