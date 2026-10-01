@@ -28,15 +28,15 @@
                         <input type="text" placeholder="O que será?" name="descricao" id="descricao" class="tarefa">
                     <label>Prioridade:</label>
                     <select name="prioridade" id="prioridade" class="tarefa">
-                        <option value="0" disabled selected hidden></option>
+                        <option value="" disabled selected hidden></option>
                         <option value="1">Alta</option>
                         <option value="2">Média</option>
                         <option value="3">Baixa</option>
                     </select>
                     <br>
                     <label>Categoria:</label>
-                        <select name="categoria" id="categoria" class="tarefa">
-                            <option value="0" disabled selected hidden></option>
+                        <select name="categoria" id="categoria" class="tarefa tarefaSelect">
+                            <option value="" disabled selected hidden></option>
                             <option value="1">Estudos</option>
                             <option value="2">Lazer</option>
                             <option value="3">Trabalho</option>
@@ -44,8 +44,8 @@
                         </select>
                     <br>
                     <label>Situação da tarefa: </label>
-                        <select name="sitTarefa" id="sitTarefa" class="tarefa">
-                        <option value="0" disabled selected hidden></option>
+                        <select name="sitTarefa" id="sitTarefa" class="tarefa tarefaSelect">
+                        <option value="" disabled selected hidden></option>
                         <option value="1">Começando</option>
                         <option value="2">Em andamento</option>
                         <option value="3">Concluído</option>
@@ -53,7 +53,7 @@
                     <label>Data:</label>
                     <input type="date" name="dataTarefa" id="dataTarefa" class="tarefa">
                     <input type="button" value="Adicionar Tarefa" class="TarefaFuncao" id="cadastrar"/>
-                    <input type="reset" class="TarefaFuncao"/>
+                    <input type="reset" class="TarefaFuncao" name="resetTarefa" id="resetTarefa"/>
                 </form>
                 </div>
         </main>

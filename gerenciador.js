@@ -1,18 +1,22 @@
 document.getElementById("cadastrar").addEventListener("click", function(){
-    const descricao = document.getElementById("descricao").value;
+    const selects = document.querySelectorAll('.tarefaSelect');
+    let msgErro = "";
+    console.log(selects.length);
+    for(let i = 0; i < selects.length; i++){
+        if(selects[i].value === ""){
+            msgErro += `- Campo ${selects[i].id} não preenchido\n`;
+        }
+    }
+    alert(msgErro);
+    const descricao = document.getElementById("descricao");
     const prioridadeElement = document.getElementById("prioridade");
     const categoriaElement = document.getElementById("categoria");
-    const sitTarefa = document.getElementById("sitTarefa");
-    const dataTarefa = document.getElementById("dataTarefa").value;
-    const prioridade = prioridadeElement.selectedIndex !== 0 ? prioridadeElement.options[prioridadeElement.selectedIndex].text : "Não informada";
-    const categoria = categoriaElement.selectedIndex !== 0 ? categoriaElement.options[categoriaElement.selectedIndex].text : "Não informada";
-    const situacao = sitTarefaElement.selectedIndex !== 0 ? sitTarefaElement.options[sitTarefaElement.selectedIndex].text : "Não informada";
-    const mensagem = `Resumo da Tarefa:\n\n` +
-                     `• Descrição: ${descricao || "Vazia"}\n` +
-                     `• Prioridade: ${prioridade}\n` +
-                     `• Categoria: ${categoria}\n` +
-                     `• Situação: ${situacao}\n` +
-                     `• Data: ${dataTarefa || "Não informada"}`;
-
-    alert(mensagem);
-})
+    const sitTarefaElement = document.getElementById("sitTarefa");
+    const dataTarefa = document.getElementById("dataTarefa");
+    if(descricao.value === ""){
+        msgErro += "- Descrição vazia."
+    }
+    if(prioridadeElement.value === ""){
+        msgErro += "- Prioridade não preenchida."
+    }
+});
