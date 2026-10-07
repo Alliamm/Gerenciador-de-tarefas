@@ -11,21 +11,47 @@
     <div class="container">
         <header>
             <h1>Gerenciador de Tarefas</h1>
-            <button>Criar nova Tarefa</button>
         </header>
-        <nav>
+        <nav class="menu-cortina">
             <ul>
-                <li><a href="#">Cadastro</a></li>
-                <li><a href="#">Filtros</a></li>
-                <li><a href="#">Area de resumo/indicadores</a></li>
-                <li><a href="#">Conferir Tarefas</a></li>
+                <li><a href="#">Tarefas</a>
+                    <div class="cortina">
+                        <a href="#">Item 1</a>
+                        <a href="#">Item 2</a>
+                        <a href="#">Item 3</a>
+                    </div>
+                </li>
+                <li><a href="#">Filtros</a>
+                <div class="cortina">
+                        <a href="#">Item 1</a>
+                        <a href="#">Item 2</a>
+                        <a href="#">Item 3</a>
+                    </div>
+                </li>
+                <li><a href="#">Area de resumo/indicadores</a>
+                <div class="cortina">
+                        <a href="#">Item 1</a>
+                        <a href="#">Item 2</a>
+                        <a href="#">Item 3</a>
+                    </div>
+                </li>
+                <li><a href="#">Conferir Tarefas</a>
+                <div class="cortina">
+                        <a href="#">Item 1</a>
+                        <a href="#">Item 2</a>
+                        <a href="#">Item 3</a>
+                    </div>
+                </li>
             </ul>
         </nav>
         <main>
+            <button id="botaoTarefa">Criar nova Tarefa</button>
+            <dialog id="meuModal">
                 <div id="CaixaTarefa">
                 <form id="tarefa">
                     <label>Descrição:</label>
-                        <input type="text" placeholder="O que será?" name="descricao" id="descricao" class="tarefa">
+                        <!-- <input type="text" placeholder="O que será?" name="descricao" id="descricao" class="tarefa"> -->
+                        <textarea name="descricao" id="descricao" rows="2" cols="25" placeholder="aaaaaaaaaa" autocomplete="off"></textarea>
                     <label>Prioridade:</label>
                     <select name="prioridade" id="prioridade" class="tarefa">
                         <option value="" disabled selected hidden></option>
@@ -54,8 +80,10 @@
                     <input type="date" name="dataTarefa" id="dataTarefa" class="tarefa">
                     <input type="button" value="Adicionar Tarefa" class="TarefaFuncao" id="cadastrar"/>
                     <input type="reset" class="TarefaFuncao" name="resetTarefa" id="resetTarefa"/>
+                    <button type="button" id="btnFechar">Cancelar</button>
                 </form>
                 </div>
+            </dialog>
         </main>
         <footer>
         </footer>

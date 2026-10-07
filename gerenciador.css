@@ -50,18 +50,28 @@ main {
     grid-area: main;
     justify-content: center;
     display: flex;
-    div#CaixaTarefa{
+    dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+        background-color: lightblue;
+        border-radius: 8px;
+        box-shadow: 0px 8px 10px #888888;
+    border:none;
+        div#CaixaTarefa{
+        display: none;
         width: max-content;
         flex-wrap: wrap;
         max-width: 300px;
         height: max-content;
         padding: 10px;
         background-color: lightblue;
-        border-radius: 8px;
-        box-shadow: 0px 8px 10px #888888;
         box-sizing: border-box;
         flex-direction: column;
     }
+}
+    
 }
 .TarefaFuncao{
         align-items:center;
@@ -70,10 +80,41 @@ main {
         height: 50px;
         padding: 10px;
             }
-footer {
+#botaoTarefa{
+    width: max-content;
+    flex-wrap: wrap;
+    height: max-content;
+    padding: 10px;
+}
+#descricao{
+    resize:none;
+    field-sizing:content;
+    min-height: 10px;
+    width: 70%;
+}
+.menu-cortina > ul > li > a {
+  display: block;
+  padding: 15px 25px;
+  color: #000000;
+  text-decoration: none;
+}
+.cortina {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-out;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+}
+.menu-cortina li:hover .cortina {
+    max-height: 200px;
+    width: max-content;
+    background-color: aquamarine;
+}
+/* footer {
     grid-area: footer;
     background-color: lightgray;
     display: flex;
     align-items: center;
     justify-content: center;    
-}
+} */
