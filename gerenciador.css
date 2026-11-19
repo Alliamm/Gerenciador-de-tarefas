@@ -1,8 +1,4 @@
 
-/* ==================================================
-   1. VARIÁVEIS E CONFIGURAÇÕES GERAIS
-================================================== */
-
 :root {
     --azul-escuro: #287da9;
     --azul: #55b9dc;
@@ -27,6 +23,26 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+body.tema-escuro {
+
+    --azul-escuro: #8bd5f5;
+    --azul: #55b9dc;
+    --azul-claro: #244b5e;
+
+    --turquesa: #347e80;
+    --verde: #39745d;
+
+    --branco: rgba(30, 48, 60, 0.85);
+
+    --texto: #e2f1f7;
+    --texto-claro: #aac4d1;
+
+    --borda: rgba(255, 255, 255, 0.12);
+
+    --sombra: 0 8px 25px rgba(0, 0, 0, 0.25);
+
 }
 
 html {
@@ -130,10 +146,9 @@ header p {
 
 nav {
     grid-area: nav;
-
     display: flex;
     justify-content: center;
-
+    gap: 15px;
     padding: 15px 20px;
 
     position: relative;
@@ -544,6 +559,10 @@ main {
    14. SITUAÇÕES
 ================================================== */
 
+
+
+
+
 .situacao-1 {
     background: #e2efff;
     color: #477db0;
@@ -602,64 +621,35 @@ main {
     transform: translateY(-2px);
 }
 
-
-/* ==================================================
-   16. MENSAGEM DE LISTA VAZIA
-================================================== */
-
 #mensagemVazia {
     text-align: center;
-
     padding: 35px 15px;
-
     color: var(--texto-claro);
-
     font-size: 14px;
 }
 
-
-/* ==================================================
-   17. MODAL
-================================================== */
-
 dialog {
     position: fixed;
-
     top: 50%;
     left: 50%;
-
     transform: translate(-50%, -50%);
-
     width: min(90%, 480px);
-
     max-height: 85vh;
-
     overflow-y: auto;
-
     padding: 25px;
-
     border: 1px solid rgba(255,255,255,0.95);
     border-radius: 25px;
-
     background: rgba(235,251,255,0.92);
-
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-
     box-shadow: 0 15px 45px rgba(40,120,160,0.25);
 }
 
 dialog::backdrop {
     background: rgba(35,95,130,0.35);
-
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
 }
-
-
-/* ==================================================
-   18. CABEÇALHO DO MODAL
-================================================== */
 
 .modalCabecalho {
     margin-bottom: 20px;
@@ -667,45 +657,32 @@ dialog::backdrop {
 
 .modalCabecalho h2 {
     color: var(--azul-escuro);
-
     font-size: 22px;
-
     margin-bottom: 5px;
 }
 
 .modalCabecalho p {
     color: var(--texto-claro);
-
     font-size: 13px;
 }
-
-
-/* ==================================================
-   19. FORMULÁRIO
-================================================== */
 
 #CaixaTarefa {
     width: 100%;
     max-width: 100%;
-
     padding: 5px;
-
     background: transparent;
 }
 
 #tarefa {
     display: flex;
     flex-direction: column;
-
     gap: 10px;
 }
 
 #tarefa label {
     color: var(--azul-escuro);
-
     font-size: 14px;
     font-weight: bold;
-
     margin-top: 5px;
 }
 
@@ -713,27 +690,19 @@ dialog::backdrop {
 #tarefa select,
 #tarefa input {
     width: 100%;
-
     padding: 12px;
-
     border: 1px solid rgba(91,174,201,0.3);
     border-radius: 13px;
-
     background: rgba(255,255,255,0.8);
-
     color: var(--texto);
-
     font-family: inherit;
     font-size: 14px;
-
     outline: none;
-
     transition: 0.25s ease;
 }
 
 #tarefa textarea {
     resize: vertical;
-
     min-height: 80px;
     max-height: 180px;
 }
@@ -742,9 +711,7 @@ dialog::backdrop {
 #tarefa select:focus,
 #tarefa input:focus {
     border-color: var(--azul);
-
     box-shadow: 0 0 0 3px rgba(85,185,220,0.15);
-
     background: white;
 }
 
@@ -752,40 +719,27 @@ dialog::backdrop {
     cursor: pointer;
 }
 
-
-/* ==================================================
-   20. BOTÕES DO FORMULÁRIO
-================================================== */
-
 .botoesFormulario {
     display: flex;
     flex-direction: column;
-
     gap: 9px;
-
     margin-top: 15px;
 }
 
 .botoesFormulario button {
     width: 100%;
-
     min-height: 43px;
-
     border: none;
     border-radius: 15px;
-
     font-family: inherit;
     font-size: 14px;
     font-weight: bold;
-
     cursor: pointer;
-
     transition: 0.25s ease;
 }
 
 .botoesFormulario button:hover {
     transform: translateY(-2px);
-
     filter: brightness(1.04);
 }
 
@@ -795,15 +749,12 @@ dialog::backdrop {
         #4daee0,
         #61d2c4
     );
-
     color: white;
 }
 
 #resetTarefa {
     background: white;
-
     color: var(--texto);
-
     border: 1px solid var(--borda);
 }
 
@@ -812,25 +763,14 @@ dialog::backdrop {
 
     color: #47758b;
 }
-
-
-/* ==================================================
-   21. RODAPÉ
-================================================== */
-
 footer {
     grid-area: footer;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     min-height: 55px;
-
     padding: 15px;
-
     background: rgba(255,255,255,0.3);
-
     border-top: 1px solid rgba(255,255,255,0.6);
 }
 
@@ -839,6 +779,165 @@ footer p {
 
     font-size: 12px;
 }
+body.tema-escuro {
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            #263f50 0%,
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            #244d4b 0%,
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #142b3a,
+            #1b3949,
+            #193b35
+        );
+
+}
+body.tema-escuro header {
+    background: linear-gradient(
+        120deg,
+        #245b78,
+        #286b69
+    );
+}
+body.tema-escuro nav ul {
+    background: rgba(25, 48, 62, 0.85);
+    border-color: var(--borda);
+}
+body.tema-escuro nav ul li a {
+    color: var(--texto);
+}
+body.tema-escuro nav ul li a:hover {
+    background: linear-gradient(
+        135deg,
+        #347eaa,
+        #398f88
+    );
+    color: white;
+}
+body.tema-escuro .cortina {
+    background: rgba(30, 55, 70, 0.98);
+}
+body.tema-escuro .indicador {
+    background: rgba(35, 60, 75, 0.85);
+    border-color: var(--borda);
+}
+body.tema-escuro .cartaoTarefa {
+    background: rgba(35, 60, 75, 0.88);
+    border-color: var(--borda);
+}
+body.tema-escuro .filtros input,
+body.tema-escuro .filtros select {
+    background: #243f50;
+    color: var(--texto);
+    border-color: #426579;
+}
+
+body.tema-escuro .filtros input::placeholder {
+    color: #9bb6c4;
+}
+body.tema-escuro dialog {
+    background: rgba(28, 49, 64, 0.98);
+    border-color: #496477;
+}
+
+body.tema-escuro #tarefa textarea,
+body.tema-escuro #tarefa select,
+body.tema-escuro #tarefa input {
+    background: #243f50;
+    color: var(--texto);
+    border-color: #426579;
+}
+body.tema-escuro #resetTarefa {
+    background: #304e60;
+    color: var(--texto);
+    border-color: var(--borda);
+}
+body.tema-escuro #btnFechar {
+    background: #38596c;
+    color: white;
+}
+body.tema-escuro .botaoExcluir {
+    background: #633c49;
+    color: #ffd0d9;
+}
+body.tema-escuro .botaoExcluir:hover {
+    background: #80505d;
+}
+body.tema-escuro .botaoConcluir {
+    background: #39745d;
+    color: white;
+}
+body.tema-escuro .botaoConcluir:hover {
+    background: #498b70;
+}
+body.tema-escuro footer {
+    background: rgba(20, 40, 52, 0.6);
+    border-color: var(--borda);
+}
+
+.tema input {
+    position: absolute;
+    opacity: 0;
+}
+.switch {
+    position:absolute;
+    display: flex;
+    align-items: center;
+    width: 65px;
+    height: 32px;
+    padding: 0px;
+    border-radius: 30px;
+    background-color: #bceaf1;
+    
+    background-repeat: no-repeat;
+    background-size: 19px;
+    background-position: 7px center;
+    border: 1px solid white;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+.bolinha {
+    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1), background-image 0.3s ease;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    background-image: url("./ibagens/sun-svgrepo-com%20(1).svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20px;
+    border-radius: 50%;
+}
+.tema input:checked + .switch {
+    background-color: #29495b;
+    background-position: calc(100% - 7px) center;
+}
+.tema input:checked + .switch .bolinha {
+    transform: translateX(33px);
+    background-color: white;
+    background-image: url("./ibagens/moon-svgrepo-com.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 16px;
+}
+.tema {
+    display: flex;
+    align-items: center;
+}
+/* ACESSIBILIDADE
+
+.tema input:focus-visible + .switch {
+    outline: 3px solid var(--azul);
+    outline-offset: 3px;
+} */
+
+
 
 /* ==================================================
    25. ACESSIBILIDADE E MOVIMENTO

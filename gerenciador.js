@@ -20,13 +20,10 @@ try {
     const dadosSalvos = JSON.parse(
         localStorage.getItem("minhasTarefas") || "[]"
     );
-
     tarefas = Array.isArray(dadosSalvos) ? dadosSalvos : [];
-
 } catch (erro) {
     console.error("Erro ao recuperar tarefas:", erro);
 }
-
 
 function abrirModal() {
     formulario.reset();
@@ -281,3 +278,18 @@ filtroSituacao.addEventListener("change", renderizarTarefas);
 
 renderizarTarefas();
 atualizarIndicadores();
+
+const temaCheckbox = document.getElementById("temaCheckbox");
+const temaSalvo = localStorage.getItem("tema") || "claro";
+
+temaCheckbox.checked = temaSalvo === "escuro";
+document.body.classList.toggle("tema-escuro", temaCheckbox.checked);
+temaCheckbox.addEventListener("change", function () {
+    if (temaCheckbox.checked) {
+        document.body.classList.add("tema-escuro");
+        localStorage.setItem("tema", "escuro");
+    } else {
+        document.body.classList.remove("tema-escuro");
+        localStorage.setItem("tema", "claro");
+    }
+});
