@@ -887,7 +887,7 @@ body.tema-escuro footer {
     opacity: 0;
 }
 .switch {
-    position:absolute;
+    position:relative;
     display: flex;
     align-items: center;
     width: 65px;

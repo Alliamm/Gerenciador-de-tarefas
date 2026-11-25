@@ -1,265 +1,280 @@
 
-<!DOCTYPE html>
-<html lang="pt-BR">
+    <!DOCTYPE html>
+    <html lang="pt-BR">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Gerenciador de Tarefas</title>
+        <title>Gerenciador de Tarefas</title>
 
-    <link rel="stylesheet" href="gerenciador.css">
+        <link rel="stylesheet" href="gerenciador.css">
 
-    <script src="gerenciador.js" defer></script>
-</head>
+        <script src="gerenciador.js" defer></script>
+    </head>
 
-<body>
+    <body>
+        <!-- <video id="videoFundo" autoplay muted loop playsinline>
+            <source src="./ibagens/4382-178617337_medium.mp4">
+        </video> -->
+        <div class="container">
+            <header>
+                <h1>Gerenciador de Tarefas</h1>
+                <p>Organize seu dia, uma tarefa de cada vez!</p>
+            </header>
+            <nav class="menu-cortina">
 
-    <div class="container">
-        <header>
-            <h1>Gerenciador de Tarefas</h1>
-            <p>Organize seu dia, uma tarefa de cada vez!</p>
-        </header>
-        <nav class="menu-cortina">
+                <ul>
+                    <li><a href="#inicio">Início</a></li>
 
-            <ul>
-                <li><a href="#inicio">Início</a></li>
-
-                <li>
-                    <a href="#listaTarefas">Minhas tarefas</a>
-                    <div class="cortina">
-                        <a href="#listaTarefas">Todas as tarefas</a>
-                        <a href="#listaTarefas">Pendentes</a>
-                        <a href="#listaTarefas">Concluídas</a>
-                    </div>
+                    <li>
+                        <a href="#listaTarefas">Minhas tarefas</a>
+                        <div class="cortina" id="menuTarefas">
+                            <a href="#listaTarefas" data-status="">Todas as tarefas</a>
+                            <a href="#listaTarefas" data-status="pendentes">Pendentes</a>
+                            <a href="#listaTarefas" data-status="concluidas">Concluídas</a>
+                        </div>
+                    </li>
+                
+                    <li>
+                    <a href="#listaTarefas">Categorias</a>
+                        <div class="cortina" id="menuCategorias">
+                            <a href="#listaTarefas" data-categoria="">Todas as categorias</a>
+                            <a href="#listaTarefas" data-categoria="1">Estudos</a>
+                            <a href="#listaTarefas" data-categoria="2">Lazer</a>
+                            <a href="#listaTarefas" data-categoria="3">Trabalho</a>
+                            <a href="#listaTarefas" data-categoria="4">Rotina</a>
+                        </div>
+                    </li>
+                    <li>
+                    <a href="#listaTarefas">Indicadores</a>
+                        <div class="cortina" id="menuSituacoes">
+                            <a href="#listaTarefas" data-situacao="">Todas as situações</a>
+                            <a href="#listaTarefas" data-situacao="1">Começando</a>
+                            <a href="#listaTarefas" data-situacao="2">Em andamento</a>
+                            <a href="#listaTarefas" data-situacao="3">Concluído</a>
+                        </div>
                 </li>
-            
-                <li><a href="#listaTarefas">Categorias</a></li>
+                </ul>
+                <div class="tema">
+                <input type="checkbox" id="temaCheckbox">
+                    <label for="temaCheckbox" class="switch">
+                        <span class="bolinha"></span>
+                </label>
 
-                <li><a href="#indicadores">Indicadores</a></li>
-            </ul>
-            <div class="tema">
-            <input type="checkbox" id="temaCheckbox">
-                <label for="temaCheckbox" class="switch">
-                    <span class="bolinha"></span>
-            </label>
+    </div>
+            </nav>
+            <main id="inicio">
+                <section id="indicadores">
 
-</div>
-                <!-- <button type="button" id="alternarTema">
-        🌙 Modo escuro
-    </button> -->
-        </nav>
-        <main id="inicio">
-            <section id="indicadores">
+                    <h2>Resumo das tarefas</h2>
 
-                <h2>Resumo das tarefas</h2>
+                    <div class="indicadores-container">
 
-                <div class="indicadores-container">
+                        <article class="indicador">
+                            <span>Total de tarefas</span>
+                            <strong id="totalTarefas">0</strong>
+                        </article>
 
-                    <article class="indicador">
-                        <span>Total de tarefas</span>
-                        <strong id="totalTarefas">0</strong>
-                    </article>
+                        <article class="indicador">
+                            <span>Concluídas</span>
+                            <strong id="tarefasConcluidas">0</strong>
+                        </article>
 
-                    <article class="indicador">
-                        <span>Concluídas</span>
-                        <strong id="tarefasConcluidas">0</strong>
-                    </article>
+                        <article class="indicador">
+                            <span>Em andamento</span>
+                            <strong id="tarefasAndamento">0</strong>
+                        </article>
 
-                    <article class="indicador">
-                        <span>Em andamento</span>
-                        <strong id="tarefasAndamento">0</strong>
-                    </article>
-
-                    <article class="indicador">
-                        <span>Pendentes</span>
-                        <strong id="tarefasPendentes">0</strong>
-                    </article>
-
-                </div>
-
-            </section>
-            <section class="areaCadastro">
-
-                <div class="titulo-lista">
-                    <div>
-                        <h2>Minhas tarefas</h2>
-                        <p>Gerencie suas atividades.</p>
-                    </div>
-
-                    <button type="button" id="botaoTarefa">
-                        + Criar nova tarefa
-                    </button>
-                </div>
-
-            </section>
-            <section class="filtros">
-
-                <input
-                    type="search"
-                    id="pesquisaTarefa"
-                    placeholder="Pesquisar tarefa..."
-                >
-
-                <select id="filtroCategoria">
-                    <option value="">Todas as categorias</option>
-                    <option value="1">Estudos</option>
-                    <option value="2">Lazer</option>
-                    <option value="3">Trabalho</option>
-                    <option value="4">Rotina</option>
-                </select>
-
-                <select id="filtroSituacao">
-                    <option value="">Todas as situações</option>
-                    <option value="1">Começando</option>
-                    <option value="2">Em andamento</option>
-                    <option value="3">Concluído</option>
-                </select>
-
-            </section>
-
-            <section id="listaTarefas">
-
-                <div id="containerTarefas">
-                </div>
-                <p id="mensagemVazia">
-                    Nenhuma tarefa cadastrada ainda.
-                </p>
-
-            </section>
-            <dialog id="meuModal">
-
-                <div id="CaixaTarefa">
-
-                    <div class="modalCabecalho">
-
-                        <h2>Nova tarefa</h2>
-
-                        <p>Preencha as informações abaixo.</p>
+                        <article class="indicador">
+                            <span>Pendentes</span>
+                            <strong id="tarefasPendentes">0</strong>
+                        </article>
 
                     </div>
 
-                    <form id="tarefa">
+                </section>
+                <section class="areaCadastro">
 
-                        <label for="descricao">
-                            Descrição:
-                        </label>
+                    <div class="titulo-lista">
+                        <div>
+                            <h2>Minhas tarefas</h2>
+                            <p>Gerencie suas atividades.</p>
+                        </div>
 
-                        <textarea
-                            name="descricao"
-                            id="descricao"
-                            rows="3"
-                            placeholder="O que precisa ser feito?"
-                            required
-                            maxlength="200"
-                        ></textarea>
+                        <button type="button" id="botaoTarefa">
+                            + Criar nova tarefa
+                        </button>
+                    </div>
 
-                        <label for="prioridade">
-                            Prioridade:
-                        </label>
+                </section>
+                <section class="filtros">
 
-                        <select
-                            name="prioridade"
-                            id="prioridade"
-                            required
-                        >
-                            <option value="" disabled selected>
-                                Selecione a prioridade
-                            </option>
+                    <input
+                        type="search"
+                        id="pesquisaTarefa"
+                        placeholder="Pesquisar tarefa..."
+                    >
 
-                            <option value="1">Alta</option>
-                            <option value="2">Média</option>
-                            <option value="3">Baixa</option>
+                    <!-- <select id="filtroCategoria">
+                        <option value="">Todas as categorias</option>
+                        <option value="1">Estudos</option>
+                        <option value="2">Lazer</option>
+                        <option value="3">Trabalho</option>
+                        <option value="4">Rotina</option>
+                    </select> -->
 
-                        </select>
+                    <!-- <select id="filtroSituacao">
+                        <option value="">Todas as situações</option>
+                        <option value="1">Começando</option>
+                        <option value="2">Em andamento</option>
+                        <option value="3">Concluído</option>
+                    </select> -->
 
-                        <label for="categoria">
-                            Categoria:
-                        </label>
+                </section>
 
-                        <select
-                            name="categoria"
-                            id="categoria"
-                            required
-                        >
-                            <option value="" disabled selected>
-                                Selecione a categoria
-                            </option>
+                <section id="listaTarefas">
 
-                            <option value="1">Estudos</option>
-                            <option value="2">Lazer</option>
-                            <option value="3">Trabalho</option>
-                            <option value="4">Rotina</option>
+                    <div id="containerTarefas">
+                    </div>
+                    <p id="mensagemVazia">
+                        Nenhuma tarefa cadastrada ainda.
+                    </p>
 
-                        </select>
+                </section>
+                <dialog id="meuModal">
 
-                        <label for="sitTarefa">
-                            Situação da tarefa:
-                        </label>
+                    <div id="CaixaTarefa">
 
-                        <select
-                            name="sitTarefa"
-                            id="sitTarefa"
-                            required
-                        >
-                            <option value="" disabled selected>
-                                Selecione a situação
-                            </option>
+                        <div class="modalCabecalho">
 
-                            <option value="1">Começando</option>
-                            <option value="2">Em andamento</option>
-                            <option value="3">Concluído</option>
+                            <h2>Nova tarefa</h2>
 
-                        </select>
-
-                        <label for="dataTarefa">
-                            Data:
-                        </label>
-
-                        <input
-                            type="date"
-                            name="dataTarefa"
-                            id="dataTarefa"
-                            required
-                        >
-
-                        <div class="botoesFormulario">
-
-                            <button
-                                type="submit"
-                                id="cadastrar"
-                            >
-                                Adicionar tarefa
-                            </button>
-
-                            <button
-                                type="reset"
-                                id="resetTarefa"
-                            >
-                                Limpar
-                            </button>
-
-                            <button
-                                type="button"
-                                id="btnFechar"
-                            >
-                                Cancelar
-                            </button>
+                            <p>Preencha as informações abaixo.</p>
 
                         </div>
 
-                    </form>
+                        <form id="tarefa">
 
-                </div>
+                            <label for="descricao">
+                                Descrição:
+                            </label>
 
-            </dialog>
+                            <textarea
+                                name="descricao"
+                                id="descricao"
+                                rows="3"
+                                placeholder="O que precisa ser feito?"
+                                required
+                                maxlength="200"
+                            ></textarea>
 
-        </main>
-        <footer>
-            <p>Gerenciador de Tarefas © 2026</p>
-        </footer>
+                            <label for="prioridade">
+                                Prioridade:
+                            </label>
 
-    </div>
+                            <select
+                                name="prioridade"
+                                id="prioridade"
+                                required
+                            >
+                                <option value="" disabled selected>
+                                    Selecione a prioridade
+                                </option>
 
-</body>
-</html>
+                                <option value="1">Alta</option>
+                                <option value="2">Média</option>
+                                <option value="3">Baixa</option>
+
+                            </select>
+
+                            <label for="categoria">
+                                Categoria:
+                            </label>
+
+                            <select
+                                name="categoria"
+                                id="categoria"
+                                required
+                            >
+                                <option value="" disabled selected>
+                                    Selecione a categoria
+                                </option>
+
+                                <option value="1">Estudos</option>
+                                <option value="2">Lazer</option>
+                                <option value="3">Trabalho</option>
+                                <option value="4">Rotina</option>
+
+                            </select>
+
+                            <label for="sitTarefa">
+                                Situação da tarefa:
+                            </label>
+
+                            <select
+                                name="sitTarefa"
+                                id="sitTarefa"
+                                required
+                            >
+                                <option value="" disabled selected>
+                                    Selecione a situação
+                                </option>
+
+                                <option value="1">Começando</option>
+                                <option value="2">Em andamento</option>
+                                <option value="3">Concluído</option>
+
+                            </select>
+
+                            <label for="dataTarefa">
+                                Data:
+                            </label>
+
+                            <input
+                                type="date"
+                                name="dataTarefa"
+                                id="dataTarefa"
+                                required
+                            >
+
+                            <div class="botoesFormulario">
+
+                                <button
+                                    type="submit"
+                                    id="cadastrar"
+                                >
+                                    Adicionar tarefa
+                                </button>
+
+                                <button
+                                    type="reset"
+                                    id="resetTarefa"
+                                >
+                                    Limpar
+                                </button>
+
+                                <button
+                                    type="button"
+                                    id="btnFechar"
+                                >
+                                    Cancelar
+                                </button>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </dialog>
+
+            </main>
+            <footer>
+                <p>Gerenciador de Tarefas © 2026</p>
+            </footer>
+
+        </div>
+
+    </body>
+    </html>

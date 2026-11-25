@@ -5,14 +5,18 @@ const formulario = document.getElementById("tarefa");
 const containerTarefas = document.getElementById("containerTarefas");
 const mensagemVazia = document.getElementById("mensagemVazia");
 const pesquisaTarefa = document.getElementById("pesquisaTarefa");
-const filtroCategoria = document.getElementById("filtroCategoria");
-const filtroSituacao = document.getElementById("filtroSituacao");
+const menuCategorias = document.getElementById("menuCategorias");
+const menuSituacoes = document.getElementById("menuSituacoes");
 const totalTarefas = document.getElementById("totalTarefas");
 const tarefasConcluidas = document.getElementById("tarefasConcluidas");
 const tarefasAndamento = document.getElementById("tarefasAndamento");
 const tarefasPendentes = document.getElementById("tarefasPendentes");
+const menuTarefas = document.getElementById("menuTarefas");
 
 let tarefas = [];
+let filtroStatus = "";
+let categoriaSelecionada = "";
+let situacaoSelecionada = "";
 
 // Recuperar dados salvos no navegador
 
@@ -134,45 +138,77 @@ formulario.addEventListener("submit", function(event) {
 
 });
 
+menuTarefas.addEventListener("click", function(event) {
 
-// =====================================
-// 8. EXIBIR TAREFAS
-// =====================================
+    const link = event.target.closest("[data-status]");
+
+    if (!link) return;
+
+    filtroStatus = link.dataset.status;
+
+    renderizarTarefas();
+
+});
+
+menuCategorias.addEventListener("click", function(event) {
+
+    const link = event.target.closest("[data-categoria]");
+
+    if (!link) return;
+
+    categoriaSelecionada = link.dataset.categoria;
+
+    renderizarTarefas();
+
+});
+
+menuSituacoes.addEventListener("click", function(event) {
+
+    const link = event.target.closest("[data-situacao]");
+
+    if (!link) return;
+
+    situacaoSelecionada = link.dataset.situacao;
+
+    renderizarTarefas();
+
+});
 
 function renderizarTarefas() {
 
     containerTarefas.innerHTML = "";
 
     const pesquisa = pesquisaTarefa.value.toLowerCase().trim();
-
-    const categoriaSelecionada = filtroCategoria.value;
-
-    const situacaoSelecionada = filtroSituacao.value;
-
-
     const tarefasFiltradas = tarefas.filter(tarefa => {
 
-        const correspondePesquisa = tarefa.descricao
-            .toLowerCase()
-            .includes(pesquisa);
+    const correspondePesquisa = tarefa.descricao
+        .toLowerCase()
+        .includes(pesquisa);
 
-        const correspondeCategoria =
-            categoriaSelecionada === "" ||
-            tarefa.categoria === categoriaSelecionada;
+    const correspondeCategoria =
+        categoriaSelecionada === "" ||
+        tarefa.categoria === categoriaSelecionada;
 
-        const correspondeSituacao =
-            situacaoSelecionada === "" ||
-            tarefa.situacao === situacaoSelecionada;
-
-        return (
-            correspondePesquisa &&
-            correspondeCategoria &&
-            correspondeSituacao
-        );
+    const correspondeSituacao =
+        situacaoSelecionada === "" ||
+        tarefa.situacao === situacaoSelecionada;
     
+    const correspondeStatus =
 
-    });
+    filtroStatus === "" ||
 
+    (filtroStatus === "pendentes" && tarefa.situacao !== "3") ||
+
+    (filtroStatus === "concluidas" && tarefa.situacao === "3");
+    
+    return (
+        correspondePesquisa &&
+        correspondeCategoria &&
+        correspondeSituacao &&
+        correspondeStatus
+    );
+
+});
     mensagemVazia.style.display =
         tarefasFiltradas.length === 0 ? "block" : "none";
 
@@ -217,6 +253,7 @@ function renderizarTarefas() {
             tarefa.situacao = "3";
             salvarTarefas();
             renderizarTarefas();
+            atualizarIndicadores();
         });
         
 
@@ -271,10 +308,6 @@ function atualizarIndicadores() {
 }
 
 pesquisaTarefa.addEventListener("input", renderizarTarefas);
-filtroCategoria.addEventListener("change", renderizarTarefas);
-filtroSituacao.addEventListener("change", renderizarTarefas);
-
-
 
 renderizarTarefas();
 atualizarIndicadores();
